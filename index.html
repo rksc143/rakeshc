@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rakesh C Website</title>
+    <title>Rakesh C | Creativity Creates Creation</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
     <style>
         /* Reset */
@@ -14,35 +14,74 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            background-color: #f0f2f5;
-            color: #333;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
         }
 
+        /* Header / Hero */
         header {
-            background: #4CAF50;
-            color: white;
-            padding: 40px 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            padding: 20px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-bg.jpg') center/cover no-repeat;
         }
 
-        header h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        header p { font-size: 1.2rem; }
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+        }
+
+        header p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+        }
+
+        .btn {
+            background: #ff8c00;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #ffa733;
+            transform: translateY(-5px);
+        }
 
         /* Marquee */
         .marquee-container {
-            background: #333;
-            color: #fff;
+            background: #222;
+            color: #ff8c00;
+            overflow: hidden;
+            white-space: nowrap;
             padding: 10px 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-top: 3px solid #ff8c00;
+            border-bottom: 3px solid #ff8c00;
         }
 
         .marquee-container marquee {
-            font-size: 1.1rem;
-            font-weight: bold;
+            display: inline-block;
         }
 
+        /* Navigation */
         nav {
-            background: #333;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 999;
         }
 
         nav ul {
@@ -51,70 +90,67 @@
             list-style: none;
         }
 
-        nav ul li { margin: 0 15px; }
+        nav ul li {
+            margin: 0 20px;
+        }
 
         nav ul li a {
-            display: block;
-            color: white;
+            color: #fff;
             text-decoration: none;
-            padding: 15px 0;
+            padding: 20px 0;
+            display: block;
             font-weight: bold;
             transition: color 0.3s;
         }
 
-        nav ul li a:hover { color: #4CAF50; }
+        nav ul li a:hover {
+            color: #ff8c00;
+        }
 
-        main {
+        /* Sections */
+        section {
+            padding: 80px 20px;
             max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: auto;
             text-align: center;
         }
 
-        main h2 { margin-bottom: 20px; font-size: 2rem; color: #4CAF50; }
-        main p { font-size: 1.1rem; margin-bottom: 30px; }
-
-        .btn {
-            display: inline-block;
-            background: #4CAF50;
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
+        section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ff8c00;
         }
 
-        .btn:hover { background: #45a049; }
+        section p {
+            font-size: 1.1rem;
+            color: #ddd;
+            line-height: 1.8;
+        }
 
+        /* Footer */
         footer {
-            background: #333;
-            color: white;
+            background: #111;
+            color: #fff;
             text-align: center;
-            padding: 20px;
-            margin-top: 50px;
+            padding: 30px 20px;
         }
 
         /* Responsive */
-        @media(max-width: 600px) {
-            header h1 { font-size: 2rem; }
-            main h2 { font-size: 1.5rem; }
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            header p { font-size: 1.2rem; }
             nav ul { flex-direction: column; }
-            nav ul li { margin: 5px 0; }
+            nav ul li { margin: 10px 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <h1>Welcome to Rakesh C Website</h1>
-        <p>Your personal space on the web</p>
-    </header>
-
     <!-- Marquee Slogan -->
     <div class="marquee-container">
         <marquee behavior="scroll" direction="left" scrollamount="6">
-            Your Amazing Slogan Goes Here!
+            Creativity Creates Creation
         </marquee>
     </div>
 
@@ -123,17 +159,29 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="index1.html">Media</a></li>
-            <li><a href="#about">About Me</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <!-- Main Content -->
-    <main>
-        <h2>About This Website</h2>
-        <p>This website is a showcase of my work, media, and personal projects. Explore the Media page to see photos and videos, and learn more about me below.</p>
-        <a href="index1.html" class="btn">Go to Media Page</a>
-    </main>
+    <!-- Hero Section -->
+    <header>
+        <h1>Rakesh C</h1>
+        <p>Innovate, Create, Inspire</p>
+        <a href="index1.html" class="btn">Explore Media</a>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I am Rakesh, a passionate creator. My goal is to turn ideas into reality through creativity and innovation. This website showcases my projects, photos, and videos to inspire and share knowledge with the world.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Have a project idea or want to connect? Reach me at <strong>rakesh@example.com</strong>. Let's create something amazing together!</p>
+    </section>
 
     <!-- Footer -->
     <footer>
