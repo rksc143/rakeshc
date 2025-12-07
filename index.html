@@ -5,16 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rakesh C Website</title>
 
-    <!-- Google Fonts for modern look -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Reset default margins */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Roboto', sans-serif;
@@ -30,13 +26,19 @@
             text-align: center;
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        header p { font-size: 1.2rem; }
+
+        /* Marquee */
+        .marquee-container {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
         }
 
-        header p {
-            font-size: 1.2rem;
+        .marquee-container marquee {
+            font-size: 1.1rem;
+            font-weight: bold;
         }
 
         nav {
@@ -49,9 +51,7 @@
             list-style: none;
         }
 
-        nav ul li {
-            margin: 0 15px;
-        }
+        nav ul li { margin: 0 15px; }
 
         nav ul li a {
             display: block;
@@ -62,9 +62,7 @@
             transition: color 0.3s;
         }
 
-        nav ul li a:hover {
-            color: #4CAF50;
-        }
+        nav ul li a:hover { color: #4CAF50; }
 
         main {
             max-width: 1000px;
@@ -73,16 +71,8 @@
             text-align: center;
         }
 
-        main h2 {
-            margin-bottom: 20px;
-            font-size: 2rem;
-            color: #4CAF50;
-        }
-
-        main p {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
+        main h2 { margin-bottom: 20px; font-size: 2rem; color: #4CAF50; }
+        main p { font-size: 1.1rem; margin-bottom: 30px; }
 
         .btn {
             display: inline-block;
@@ -94,9 +84,7 @@
             transition: background 0.3s;
         }
 
-        .btn:hover {
-            background: #45a049;
-        }
+        .btn:hover { background: #45a049; }
 
         footer {
             background: #333;
@@ -108,31 +96,27 @@
 
         /* Responsive */
         @media(max-width: 600px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            main h2 {
-                font-size: 1.5rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-            }
-
-            nav ul li {
-                margin: 5px 0;
-            }
+            header h1 { font-size: 2rem; }
+            main h2 { font-size: 1.5rem; }
+            nav ul { flex-direction: column; }
+            nav ul li { margin: 5px 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Section -->
+    <!-- Header -->
     <header>
         <h1>Welcome to Rakesh C Website</h1>
         <p>Your personal space on the web</p>
     </header>
+
+    <!-- Marquee Slogan -->
+    <div class="marquee-container">
+        <marquee behavior="scroll" direction="left" scrollamount="6">
+            Your Amazing Slogan Goes Here!
+        </marquee>
+    </div>
 
     <!-- Navigation -->
     <nav>
