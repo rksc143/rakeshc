@@ -2,48 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Media Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rakesh C | Media</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            color: #333;
-        }
-        .media-container {
-            margin: 20px auto;
-        }
-        img, video, audio {
-            margin: 20px 0;
-            max-width: 80%;
-        }
+        body { font-family: Arial, sans-serif; background: #222; color: #fff; text-align: center; margin:0; padding:0; }
+        h1 { margin-top: 50px; color: #ff8c00; }
+        .media-container { max-width: 800px; margin: 50px auto; }
+        img, video, audio { margin: 20px 0; max-width: 100%; border-radius: 10px; }
+        a { color: #ff8c00; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 30px; }
+        a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
 
-    <h1>Welcome to My Media Page</h1>
+    <h1>My Media Gallery</h1>
 
     <div class="media-container">
-        <!-- Image -->
-        <h2>Image Example</h2>
-        <img src="media/photo.jpg" alt="Beautiful Image">
+        <!-- Image Preview -->
+        <h2>Image</h2>
+        <img src="media/image1.jpg" alt="Sample Image">
 
-        <!-- Video -->
-        <h2>Video Example</h2>
+        <!-- Video Preview -->
+        <h2>Video</h2>
         <video controls>
             <source src="media/video1.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
 
-        <!-- Audio -->
-        <h2>Audio Example</h2>
+        <!-- Audio Preview -->
+        <h2>Audio</h2>
         <audio controls>
             <source src="media/audio1.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
     </div>
+
+    <!-- Back Link -->
+    <a href="index.html">← Back to Home</a>
 
 </body>
 </html>
