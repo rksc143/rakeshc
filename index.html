@@ -10,8 +10,8 @@
         body { font-family:'Poppins', sans-serif; background:#0f2027; color:#fff; }
 
         /* Navigation */
-        nav { position:fixed; top:0; width:100%; background:rgba(0,0,0,0.7); z-index:100; display:flex; justify-content:center; }
-        nav ul { display:flex; list-style:none; padding:10px 0; }
+        nav { position:fixed; top:0; width:100%; background:rgba(0,0,0,0.7); z-index:100; display:flex; justify-content:center; padding: 10px 0; }
+        nav ul { display:flex; list-style:none; }
         nav ul li { margin:0 25px; }
         nav ul li a { text-decoration:none; color:#fff; font-weight:600; font-size:1.1rem; transition:0.3s; padding:8px 12px; border-radius:4px; }
         nav ul li a:hover { background:#ff8c00; color:#fff; }
@@ -23,9 +23,11 @@
         header .btn { background:#ff8c00; color:#fff; padding:15px 40px; border-radius:50px; text-decoration:none; font-size:1.2rem; transition:0.3s; animation:fadeIn 1.5s ease forwards; }
         header .btn:hover { background:#ffa733; transform:scale(1.1); }
 
-        /* Radio Player (Fixed at top) */
-        #radioPlayer { position:fixed; top:10px; left:50%; transform:translateX(-50%); width:90%; padding:10px 0; background-color: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; z-index:1000; }
-        #radioPlayer audio { width: 80%; }
+        /* Radio Player (Fixed at top, non-overlapping with navigation) */
+        #radioPlayer { position:fixed; top:50px; left:50%; transform:translateX(-50%); width:80%; padding:10px 0; background-color: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; z-index: 999; border-radius: 10px; }
+        #radioPlayer audio { width: 90%; }
+        #radioPlayer button { background: #ff8c00; border: none; padding: 10px 15px; margin-left: 10px; border-radius: 5px; cursor: pointer; color: #fff; }
+        #radioPlayer button:hover { background: #ffa733; }
 
         /* Weather and Time Section (Floating to the right) */
         #weather-time { position: fixed; top:80px; right:20px; background: rgba(0, 0, 0, 0.6); padding: 10px 20px; border-radius: 10px; color: #fff; font-size: 1rem; z-index: 1000; display: flex; flex-direction: column; align-items: center; }
@@ -138,7 +140,7 @@ function closePopup(){
     document.getElementById('popupContent').innerHTML = '';
 }
 
-// Radio popup
+// Radio toggle play/pause
 const radio = document.getElementById('radioAudio');
 function toggleRadio(){
     if(radio.paused){
@@ -148,10 +150,10 @@ function toggleRadio(){
     }
 }
 
-// Weather API
+// Fetch Weather and Time
 function fetchWeather() {
     const weatherStatusElement = document.getElementById('weatherStatus');
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=Kathmandu&appid=your_api_key&units=metric')
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=Kathmandu&appid=YOUR_API_KEY&units=metric')
         .then(response => response.json())
         .then(data => {
             const temperature = data.main.temp;
