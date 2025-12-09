@@ -97,7 +97,7 @@ footer { background:#111; padding:30px; margin-top:50px; font-size:0.9rem; }
     <span class="closeRadio" onclick="closeRadio()">&times;</span>
     <div class="radioContent">
         <h2>Live Radio</h2>
-        <audio id="radioAudio" controls autoplay>
+        <audio id="radioAudio" controls>
             Your browser does not support the audio element.
         </audio>
         <button onclick="toggleRadio()">Pause/Play</button>
@@ -142,8 +142,15 @@ function toggleRadio() {
 
 // Play selected radio station
 function playRadio(url) {
+    // Set the selected station's stream URL
     radio.src = url;
-    radio.play().catch(() => console.log("Autoplay blocked, click Play."));
+
+    // Try to autoplay the audio, if blocked, show the play button to start manually
+    radio.play().catch(() => {
+        console.log("Autoplay blocked, please click Play.");
+        alert("Autoplay is blocked, please click 'Pause/Play' to start the radio.");
+    });
+
     openRadio();
 }
 </script>
