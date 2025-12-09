@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rakesh C | Ultimate Media</title>
+<title>Rakesh C | Ultimate Media + Radio</title>
 <style>
+/* ----------------- Reset & Fonts ----------------- */
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Poppins', sans-serif; background:#0f2027; color:#fff; }
 
@@ -47,6 +48,10 @@ h2 { font-size:2.5rem; margin-bottom:40px; }
 /* ----------------- Footer ----------------- */
 footer { background:#111; padding:30px; margin-top:50px; font-size:0.9rem; }
 
+/* ----------------- Radio Player ----------------- */
+#radioPlayer { position:fixed; bottom:0; left:0; width:100%; background:#222; display:flex; justify-content:center; align-items:center; padding:10px 0; z-index:1000; }
+#radioPlayer button { padding:10px 20px; border:none; border-radius:10px; background:#ff8c00; color:#fff; font-weight:bold; cursor:pointer; margin-right:10px; }
+
 /* ----------------- Responsive ----------------- */
 @media(max-width:768px){
     header h1 { font-size:3rem; }
@@ -77,7 +82,7 @@ footer { background:#111; padding:30px; margin-top:50px; font-size:0.9rem; }
 <!-- About Section -->
 <section id="about">
     <h2>About Me</h2>
-    <p>Hello! I am Rakesh, a passionate creator. I create everything inline without needing extra files!</p>
+    <p>Hello! I am Rakesh, a passionate creator. Everything runs inline in this single file.</p>
 </section>
 
 <!-- Media Gallery Section -->
@@ -107,44 +112,39 @@ footer { background:#111; padding:30px; margin-top:50px; font-size:0.9rem; }
     &copy; 2025 Rakesh C. All Rights Reserved.
 </footer>
 
+<!-- Radio Player -->
+<div id="radioPlayer">
+    <audio id="radioAudio" src="http://stream.radioonline.com.np:8000/live" autoplay loop></audio>
+    <button onclick="toggleRadio()">Pause</button>
+    <span style="color:#fff;">Live Radio</span>
+</div>
+
 <!-- JavaScript -->
 <script>
-// Inline content for each media
+// Inline media content
 const mediaContent = {
     media1: "<h3>Media 1</h3><p>This is the inline content for Media 1.</p><img src='media1.jpg' style='width:100%; border-radius:10px;'>",
     media2: "<h3>Media 2</h3><p>Here is Media 2 content. Fully inline!</p><img src='media2.jpg' style='width:100%; border-radius:10px;'>",
-    media3: "<h3>Media 3</h3><p>This is amazing Media 3 description.</p><img src='media3.jpg' style='width:100%; border-radius:10px;'>",
+    media3: "<h3>Media 3</h3><p>Inline Media 3 description.</p><img src='media3.jpg' style='width:100%; border-radius:10px;'>",
     media4: "<h3>Media 4</h3><p>Inline Media 4 content here.</p><img src='media4.jpg' style='width:100%; border-radius:10px;'>",
     media5: "<h3>Media 5</h3><p>Media 5 inline popup content.</p><img src='media5.jpg' style='width:100%; border-radius:10px;'>",
 };
 
-// Open popup
+// Popup functions
 function openPopup(key){
     document.getElementById('popupContent').innerHTML = mediaContent[key];
     document.getElementById('popupOverlay').style.display = 'flex';
 }
-
-// Close popup
 function closePopup(){
     document.getElementById('popupOverlay').style.display = 'none';
     document.getElementById('popupContent').innerHTML = '';
 }
-</script>
 
-</body>
-</html>
-<!-- Radio Player -->
-<div id="radioPlayer" style="position:fixed; bottom:0; left:0; width:100%; background:#222; display:flex; justify-content:center; align-items:center; padding:10px 0; z-index:1000;">
-    <audio id="radioAudio" src="https://stream-url.com/stream.mp3" preload="auto"></audio>
-    <button onclick="toggleRadio()" style="padding:10px 20px; border:none; border-radius:10px; background:#ff8c00; color:#fff; font-weight:bold; cursor:pointer; margin-right:10px;">Play</button>
-    <span style="color:#fff;">Live Radio</span>
-</div>
+// Radio functions
+const audio = document.getElementById('radioAudio');
+const btn = document.querySelector('#radioPlayer button');
 
-<script>
-// Radio Play/Pause
 function toggleRadio(){
-    const audio = document.getElementById('radioAudio');
-    const btn = document.querySelector('#radioPlayer button');
     if(audio.paused){
         audio.play();
         btn.textContent = 'Pause';
@@ -153,4 +153,11 @@ function toggleRadio(){
         btn.textContent = 'Play';
     }
 }
+
+// Autoplay safely
+audio.volume = 0.5;
+audio.play().catch(() => { btn.textContent='Play'; });
 </script>
+
+</body>
+</html>
