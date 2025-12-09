@@ -12,7 +12,7 @@
         /* Navigation */
         nav { position:fixed; top:0; width:100%; background:rgba(0,0,0,0.7); z-index:100; display:flex; justify-content:center; }
         nav ul { display:flex; list-style:none; padding:10px 0; }
-        nav ul li { margin:0 15px; }  /* Reduced space for a cleaner look */
+        nav ul li { margin:0 25px; }
         nav ul li a { text-decoration:none; color:#fff; font-weight:600; font-size:1.1rem; transition:0.3s; padding:8px 12px; border-radius:4px; }
         nav ul li a:hover { background:#ff8c00; color:#fff; }
 
@@ -23,13 +23,13 @@
         header .btn { background:#ff8c00; color:#fff; padding:15px 40px; border-radius:50px; text-decoration:none; font-size:1.2rem; transition:0.3s; animation:fadeIn 1.5s ease forwards; }
         header .btn:hover { background:#ffa733; transform:scale(1.1); }
 
-        /* Radio Player (Click-to-play) - Now at the top */
-        #radioPlayer { position:fixed; top:10px; width:100%; padding:10px 0; background-color: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; z-index:1000; }
-        #radioPlayer audio { width: 70%; }
-        
-        /* Weather and Time Section */
-        #weather-time { display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 20px; background: rgba(0, 0, 0, 0.6); border-radius: 10px; position: absolute; top: 20px; left: 50%; transform: translateX(-50%); z-index: 10; }
-        #weather-time h3, #weather-time p { margin: 5px 0; font-size: 1.2rem; text-align: center; color: #ff8c00; }
+        /* Radio Player (Fixed at top) */
+        #radioPlayer { position:fixed; top:10px; left:50%; transform:translateX(-50%); width:90%; padding:10px 0; background-color: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; z-index:1000; }
+        #radioPlayer audio { width: 80%; }
+
+        /* Weather and Time Section (Floating to the right) */
+        #weather-time { position: fixed; top:80px; right:20px; background: rgba(0, 0, 0, 0.6); padding: 10px 20px; border-radius: 10px; color: #fff; font-size: 1rem; z-index: 1000; display: flex; flex-direction: column; align-items: center; }
+        #weather-time h3, #weather-time p { margin: 5px 0; font-size: 1.1rem; text-align: center; color: #ff8c00; }
 
         /* Animations */
         @keyframes fadeInDown {0%{opacity:0; transform:translateY(-50px);} 100%{opacity:1; transform:translateY(0);}}
@@ -47,7 +47,7 @@
         @media(max-width:768px){
             header h1 { font-size:3rem; }
             header p { font-size:1.2rem; }
-            #weather-time { top: 10px; padding: 10px; }
+            #weather-time { top:10px; right:10px; padding: 10px; }
             #radioPlayer audio { width: 90%; }
         }
     </style>
@@ -64,17 +64,17 @@
     </ul>
 </nav>
 
-<!-- Radio Player (Fixed at the top) -->
+<!-- Radio Player (Fixed at the top center) -->
 <div id="radioPlayer">
     <audio id="radioAudio" src="https://npr-ice.streamguys1.com/live.mp3" controls autoplay></audio>
     <button onclick="toggleRadio()">Pause/Play</button>
 </div>
 
-<!-- Weather and Time Section -->
-<section id="weather-time">
+<!-- Weather and Time Section (Floating) -->
+<div id="weather-time">
     <h3 id="weatherStatus">Loading Weather...</h3>
     <p id="currentTime">Loading Time...</p>
-</section>
+</div>
 
 <!-- Hero -->
 <header id="hero">
@@ -104,16 +104,6 @@
 <div id="popupOverlay">
     <span class="closeBtn" onclick="closePopup()">&times;</span>
     <div class="popupContent" id="popupContent"></div>
-</div>
-
-<!-- Radio Popup -->
-<div id="radioPopup">
-    <span class="closeRadio" onclick="closeRadio()">&times;</span>
-    <div class="radioContent">
-        <h2>Live Radio</h2>
-        <audio id="radioAudio" src="https://npr-ice.streamguys1.com/live.mp3" controls autoplay></audio>
-        <button onclick="toggleRadio()">Pause/Play</button>
-    </div>
 </div>
 
 <!-- Contact -->
@@ -150,14 +140,6 @@ function closePopup(){
 
 // Radio popup
 const radio = document.getElementById('radioAudio');
-function openRadio(){
-    document.getElementById('radioPopup').style.display = 'flex';
-    radio.play().catch(() => console.log("Autoplay blocked, click Play."));
-}
-function closeRadio(){
-    radio.pause();
-    document.getElementById('radioPopup').style.display = 'none';
-}
 function toggleRadio(){
     if(radio.paused){
         radio.play();
@@ -177,7 +159,7 @@ function fetchWeather() {
             weatherStatusElement.textContent = `${description} - ${temperature}°C`;
         })
         .catch(error => {
-            console.log(error); // Debugging line: Log any errors to the console
+            console.log(error); 
             weatherStatusElement.textContent = 'Failed to load weather data';
         });
 }
@@ -196,7 +178,7 @@ function updateTime() {
 setInterval(() => {
     fetchWeather();
     updateTime();
-}, 60000); // Update every 60 seconds
+}, 60000); 
 
 // Initial fetch
 fetchWeather();
