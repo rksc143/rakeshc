@@ -1,77 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rakesh C | Creativity Creates Creation</title>
+<header>
+    <h1>Rakesh C</h1>
+    <p>Innovate, Create, Inspire</p>
+    <a href="index1.html" class="btn">Explore Media</a>
+</header>
 
-    <style>
-        body { font-family: Arial, sans-serif; background: #1e3c72; color: #fff; text-align: center; margin:0; padding:0; }
-        header { padding: 100px 20px; background: #2a5298; }
-        header h1 { font-size: 3rem; margin-bottom: 20px; }
-        header p { font-size: 1.5rem; margin-bottom: 30px; }
-        .btn { background: #ff8c00; color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; display: inline-block; margin-top: 20px; }
-        .btn:hover { background: #ffa733; }
-        nav ul { display: flex; justify-content: center; list-style: none; background: #111; margin:0; padding:0; }
-        nav ul li { margin: 0 20px; }
-        nav ul li a { color: #fff; text-decoration: none; padding: 15px 0; display: block; }
-        nav ul li a:hover { color: #ff8c00; }
-        section { padding: 80px 20px; max-width: 800px; margin:auto; }
-        footer { background: #111; color: #fff; padding: 30px 20px; }
+<!-- Media Gallery Section -->
+<section id="mediaGallery" style="padding:50px; text-align:center;">
+    <h2>Media Gallery</h2>
+    <img src="media1.jpg" class="thumb" onclick="openMedia('index1.html')" alt="Media 1">
+    <img src="media2.jpg" class="thumb" onclick="openMedia('index2.html')" alt="Media 2">
+    <iframe id="mediaFrame" src="" style="width:80%; height:400px; border:2px solid #fff; display:none; margin-top:30px;"></iframe>
+</section>
 
-        /* iframe styling */
-        #mediaFrame { width: 80%; height: 500px; border: 2px solid #fff; display: none; margin-top: 50px; }
-        #mediaFrameContainer { text-align:center; }
-        img.clickable { cursor:pointer; border-radius:10px; width:200px; transition: transform 0.3s; }
-        img.clickable:hover { transform: scale(1.05); }
-    </style>
-</head>
-<body>
-
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index1.html">Media</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <!-- Hero Section -->
-    <header>
-        <h1>Rakesh C</h1>
-        <p>Innovate, Create, Inspire</p>
-
-        <!-- Clickable Photo to open index1.html in iframe -->
-        <img src="media-thumbnail.jpg" alt="Click to explore media" class="clickable"
-             onclick="document.getElementById('mediaFrame').style.display='block'; document.getElementById('mediaFrame').src='index1.html';">
-
-        <!-- Optional Button -->
-        <a href="index1.html" class="btn" target="_blank">Open Media in New Tab</a>
-    </header>
-
-    <!-- iframe Container -->
-    <section id="mediaFrameContainer">
-        <iframe id="mediaFrame" src=""></iframe>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hello! I am Rakesh, a passionate creator. My goal is to turn ideas into reality through creativity and innovation.</p>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Reach me at <strong>rakesh14re@gmail.com</strong>.</p>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        &copy; 2025 Rakesh C. All Rights Reserved.
-    </footer>
-
-</body>
-</html>
+<script>
+function openMedia(page){
+    const frame = document.getElementById('mediaFrame');
+    frame.src = page;
+    frame.style.display = 'block';
+}
+</script>
