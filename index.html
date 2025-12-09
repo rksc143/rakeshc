@@ -33,10 +33,18 @@
         h2 { font-size:2.5rem; margin-bottom:40px; }
 
         /* Weather and Time Section */
-        #weather, #time { font-size:1.2rem; margin-top:20px; }
+        #weather-time { display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 20px; background: rgba(0, 0, 0, 0.6); border-radius: 10px; position: absolute; top: 20px; left: 50%; transform: translateX(-50%); z-index: 10; }
+        #weather-time h3, #weather-time p { margin: 5px 0; font-size: 1.2rem; text-align: center; color: #ff8c00; }
 
         /* Footer */
         footer { background:#111; padding:30px; margin-top:50px; font-size:0.9rem; }
+
+        /* Responsive */
+        @media(max-width:768px){
+            header h1 { font-size:3rem; }
+            header p { font-size:1.2rem; }
+            #weather-time { top: 10px; padding: 10px; }
+        }
     </style>
 </head>
 <body>
@@ -50,6 +58,12 @@
         <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
+
+<!-- Weather and Time Section (At the top) -->
+<section id="weather-time">
+    <h3 id="weatherStatus">Loading Weather...</h3>
+    <p id="currentTime">Loading Time...</p>
+</section>
 
 <!-- Hero -->
 <header id="hero">
@@ -65,10 +79,36 @@
     <p>Hello! I am Rakesh, a passionate creator. Everything runs inline in this single file.</p>
 </section>
 
-<!-- Weather and Time -->
-<section id="weather">
-    <h3>Current Weather: <span id="weatherStatus">Loading...</span></h3>
-    <p>Time: <span id="currentTime">Loading...</span></p>
+<!-- Media Gallery -->
+<section id="mediaGallery">
+    <h2>Media Gallery</h2>
+    <img src="media1.jpg" onclick="openPopup('media1')" alt="Media 1">
+    <img src="media2.jpg" onclick="openPopup('media2')" alt="Media 2">
+    <img src="media3.jpg" onclick="openPopup('media3')" alt="Media 3">
+    <img src="media4.jpg" onclick="openPopup('media4')" alt="Media 4">
+    <img src="media5.jpg" onclick="openPopup('media5')" alt="Media 5">
+</section>
+
+<!-- Popup Overlay -->
+<div id="popupOverlay">
+    <span class="closeBtn" onclick="closePopup()">&times;</span>
+    <div class="popupContent" id="popupContent"></div>
+</div>
+
+<!-- Radio Popup -->
+<div id="radioPopup">
+    <span class="closeRadio" onclick="closeRadio()">&times;</span>
+    <div class="radioContent">
+        <h2>Live Radio</h2>
+        <audio id="radioAudio" src="https://npr-ice.streamguys1.com/live.mp3" controls autoplay></audio>
+        <button onclick="toggleRadio()">Pause/Play</button>
+    </div>
+</div>
+
+<!-- Contact -->
+<section id="contact">
+    <h2>Contact</h2>
+    <p>Reach me at <strong>rakesh14re@gmail.com</strong>.</p>
 </section>
 
 <!-- Footer -->
@@ -78,18 +118,44 @@
 
 <!-- JS -->
 <script>
-// Function to update the time every second
-function updateTime() {
-    const currentTimeElement = document.getElementById('currentTime');
-    const date = new Date();
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
-    currentTimeElement.textContent = `${hours}:${minutes}:${seconds}`;
-}
-setInterval(updateTime, 1000); // Update time every second
+// Inline media content
+const mediaContent = {
+    media1: "<h3>Media 1</h3><p>This is the inline content for Media 1.</p><img src='media1.jpg' style='width:100%; border-radius:10px;'>",
+    media2: "<h3>Media 2</h3><p>Here is Media 2 content. Fully inline!</p><img src='media2.jpg' style='width:100%; border-radius:10px;'>",
+    media3: "<h3>Media 3</h3><p>Inline Media 3 description.</p><img src='media3.jpg' style='width:100%; border-radius:10px;'>",
+    media4: "<h3>Media 4</h3><p>Inline Media 4 content here.</p><img src='media4.jpg' style='width:100%; border-radius:10px;'>",
+    media5: "<h3>Media 5</h3><p>Media 5 inline popup content.</p><img src='media5.jpg' style='width:100%; border-radius:10px;'>",
+};
 
-// Fetch weather data using OpenWeatherMap API
+// Media popup
+function openPopup(key){
+    document.getElementById('popupContent').innerHTML = mediaContent[key];
+    document.getElementById('popupOverlay').style.display = 'flex';
+}
+function closePopup(){
+    document.getElementById('popupOverlay').style.display = 'none';
+    document.getElementById('popupContent').innerHTML = '';
+}
+
+// Radio popup
+const radio = document.getElementById('radioAudio');
+function openRadio(){
+    document.getElementById('radioPopup').style.display = 'flex';
+    radio.play().catch(() => console.log("Autoplay blocked, click Play."));
+}
+function closeRadio(){
+    radio.pause();
+    document.getElementById('radioPopup').style.display = 'none';
+}
+function toggleRadio(){
+    if(radio.paused){
+        radio.play();
+    } else {
+        radio.pause();
+    }
+}
+
+// Fetch Weather Data
 const apiKey = 'YOUR_API_KEY'; // Replace with your OpenWeatherMap API Key
 const weatherStatusElement = document.getElementById('weatherStatus');
 
@@ -109,10 +175,25 @@ function fetchWeather() {
         });
 }
 
-// Initialize weather and time
+// Update Time
+function updateTime() {
+    const currentTimeElement = document.getElementById('currentTime');
+    const date = new Date();
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    currentTimeElement.textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+// Update weather and time every minute
+setInterval(() => {
+    fetchWeather();
+    updateTime();
+}, 60000); // Update every 60 seconds
+
+// Initial fetch
 fetchWeather();
 updateTime();
 </script>
-
 </body>
 </html>
