@@ -1,17 +1,21 @@
-// weatherTime.js
-
-// Fetch Weather and Time
+<script>
+// Fetch Weather Data
 function fetchWeather() {
     const weatherStatusElement = document.getElementById('weatherStatus');
     fetch('https://api.openweathermap.org/data/2.5/weather?q=Kathmandu&appid=YOUR_API_KEY&units=metric')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Weather data not found");
+            }
+            return response.json();
+        })
         .then(data => {
             const temperature = data.main.temp;
             const description = data.weather[0].description;
             weatherStatusElement.textContent = `${description} - ${temperature}°C`;
         })
         .catch(error => {
-            console.log(error); 
+            console.error("Error fetching weather data:", error);
             weatherStatusElement.textContent = 'Failed to load weather data';
         });
 }
@@ -35,4 +39,4 @@ setInterval(() => {
 // Initial fetch
 fetchWeather();
 updateTime();
-
+</script>
