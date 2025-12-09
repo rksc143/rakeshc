@@ -94,14 +94,17 @@ const apiKey = 'YOUR_API_KEY'; // Replace with your OpenWeatherMap API Key
 const weatherStatusElement = document.getElementById('weatherStatus');
 
 function fetchWeather() {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=London&appid=${apiKey}&units=metric`)
+    // Replace 'Kathmandu' with the desired city
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=Kathmandu&appid=${apiKey}&units=metric`)
         .then(response => response.json())
         .then(data => {
+            console.log(data); // Debugging line: Check the response data in console
             const temperature = data.main.temp;
             const description = data.weather[0].description;
             weatherStatusElement.textContent = `${description} - ${temperature}°C`;
         })
         .catch(error => {
+            console.log(error); // Debugging line: Log any errors to the console
             weatherStatusElement.textContent = 'Failed to load weather data';
         });
 }
