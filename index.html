@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rakesh C | Ultimate Media + Radio</title>
+<title>Rakesh C | Media + Radio</title>
 <style>
-/* ----------------- Reset & Fonts ----------------- */
+/* Reset & Fonts */
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Poppins', sans-serif; background:#0f2027; color:#fff; }
 
-/* ----------------- Navigation ----------------- */
+/* Navigation */
 nav { position:fixed; top:0; width:100%; background:rgba(0,0,0,0.7); z-index:100; display:flex; justify-content:center; }
 nav ul { display:flex; list-style:none; padding:10px 0; }
 nav ul li { margin:0 25px; }
 nav ul li a { text-decoration:none; color:#fff; font-weight:600; transition:0.3s; }
 nav ul li a:hover { color:#ff8c00; }
 
-/* ----------------- Hero ----------------- */
+/* Hero */
 header { height:100vh; background: linear-gradient(to right, #1e3c72, #2a5298); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
 header h1 { font-size:4rem; margin-bottom:20px; animation:fadeInDown 1s ease forwards; }
 header p { font-size:1.5rem; margin-bottom:40px; animation:fadeInUp 1s ease forwards; }
@@ -28,16 +28,16 @@ header .btn:hover { background:#ffa733; transform:scale(1.1); }
 @keyframes fadeInUp {0%{opacity:0; transform:translateY(50px);} 100%{opacity:1; transform:translateY(0);}}
 @keyframes fadeIn {0%{opacity:0;}100%{opacity:1;}}
 
-/* ----------------- Sections ----------------- */
+/* Sections */
 section { padding:80px 20px; max-width:1200px; margin:auto; text-align:center; }
 h2 { font-size:2.5rem; margin-bottom:40px; }
 
-/* ----------------- Gallery ----------------- */
+/* Gallery */
 #mediaGallery { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:20px; }
 #mediaGallery img { width:100%; border-radius:15px; cursor:pointer; transition: transform 0.4s, box-shadow 0.4s; }
 #mediaGallery img:hover { transform:scale(1.1); box-shadow:0 10px 30px rgba(255,140,0,0.7); }
 
-/* ----------------- Popup ----------------- */
+/* Popup */
 #popupOverlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:1000; justify-content:center; align-items:center; animation:fadeInLight 0.5s ease forwards; }
 #popupOverlay .popupContent { background:#111; padding:20px; border-radius:10px; max-width:90%; max-height:90%; overflow:auto; text-align:left; box-shadow:0 0 50px rgba(255,140,0,0.7); }
 #popupOverlay .closeBtn { position:absolute; top:20px; right:30px; font-size:40px; cursor:pointer; color:#fff; font-weight:bold; transition:0.3s; }
@@ -45,14 +45,16 @@ h2 { font-size:2.5rem; margin-bottom:40px; }
 
 @keyframes fadeInLight {0%{opacity:0;}100%{opacity:1;}}
 
-/* ----------------- Footer ----------------- */
+/* Footer */
 footer { background:#111; padding:30px; margin-top:50px; font-size:0.9rem; }
 
-/* ----------------- Radio Player ----------------- */
-#radioPlayer { position:fixed; bottom:0; left:0; width:100%; background:#222; display:flex; justify-content:center; align-items:center; padding:10px 0; z-index:1000; }
-#radioPlayer button { padding:10px 20px; border:none; border-radius:10px; background:#ff8c00; color:#fff; font-weight:bold; cursor:pointer; margin-right:10px; }
+/* Radio Player (Click-to-play) */
+#radioPopup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:1001; justify-content:center; align-items:center; }
+#radioPopup .radioContent { background:#222; padding:20px; border-radius:10px; text-align:center; max-width:400px; width:90%; box-shadow:0 0 50px rgba(255,140,0,0.7); }
+#radioPopup .radioContent button { padding:10px 20px; border:none; border-radius:10px; background:#ff8c00; color:#fff; font-weight:bold; cursor:pointer; margin-top:15px; }
+#radioPopup .closeRadio { position:absolute; top:20px; right:30px; font-size:40px; cursor:pointer; color:#fff; font-weight:bold; }
 
-/* ----------------- Responsive ----------------- */
+/* Responsive */
 @media(max-width:768px){
     header h1 { font-size:3rem; }
     header p { font-size:1.2rem; }
@@ -72,20 +74,21 @@ footer { background:#111; padding:30px; margin-top:50px; font-size:0.9rem; }
     </ul>
 </nav>
 
-<!-- Hero Section -->
+<!-- Hero -->
 <header id="hero">
     <h1>Rakesh C</h1>
     <p>Innovate, Create, Inspire</p>
     <a href="#mediaGallery" class="btn">Explore Media</a>
+    <a href="#" class="btn" onclick="openRadio()">Listen Live Radio</a>
 </header>
 
-<!-- About Section -->
+<!-- About -->
 <section id="about">
     <h2>About Me</h2>
     <p>Hello! I am Rakesh, a passionate creator. Everything runs inline in this single file.</p>
 </section>
 
-<!-- Media Gallery Section -->
+<!-- Media Gallery -->
 <section id="mediaGallery">
     <h2>Media Gallery</h2>
     <img src="media1.jpg" onclick="openPopup('media1')" alt="Media 1">
@@ -101,7 +104,17 @@ footer { background:#111; padding:30px; margin-top:50px; font-size:0.9rem; }
     <div class="popupContent" id="popupContent"></div>
 </div>
 
-<!-- Contact Section -->
+<!-- Radio Popup -->
+<div id="radioPopup">
+    <span class="closeRadio" onclick="closeRadio()">&times;</span>
+    <div class="radioContent">
+        <h2>Live Radio</h2>
+        <audio id="radioAudio" src="http://stream.radioonline.com.np:8000/live" controls autoplay></audio>
+        <button onclick="toggleRadio()">Pause/Play</button>
+    </div>
+</div>
+
+<!-- Contact -->
 <section id="contact">
     <h2>Contact</h2>
     <p>Reach me at <strong>rakesh14re@gmail.com</strong>.</p>
@@ -112,14 +125,7 @@ footer { background:#111; padding:30px; margin-top:50px; font-size:0.9rem; }
     &copy; 2025 Rakesh C. All Rights Reserved.
 </footer>
 
-<!-- Radio Player -->
-<div id="radioPlayer">
-    <audio id="radioAudio" src="http://stream.radioonline.com.np:8000/live" autoplay loop></audio>
-    <button onclick="toggleRadio()">Pause</button>
-    <span style="color:#fff;">Live Radio</span>
-</div>
-
-<!-- JavaScript -->
+<!-- JS -->
 <script>
 // Inline media content
 const mediaContent = {
@@ -130,7 +136,7 @@ const mediaContent = {
     media5: "<h3>Media 5</h3><p>Media 5 inline popup content.</p><img src='media5.jpg' style='width:100%; border-radius:10px;'>",
 };
 
-// Popup functions
+// Media popup
 function openPopup(key){
     document.getElementById('popupContent').innerHTML = mediaContent[key];
     document.getElementById('popupOverlay').style.display = 'flex';
@@ -140,23 +146,23 @@ function closePopup(){
     document.getElementById('popupContent').innerHTML = '';
 }
 
-// Radio functions
-const audio = document.getElementById('radioAudio');
-const btn = document.querySelector('#radioPlayer button');
-
+// Radio popup
+const radio = document.getElementById('radioAudio');
+function openRadio(){
+    document.getElementById('radioPopup').style.display = 'flex';
+    radio.play().catch(() => console.log("Autoplay blocked, click Play."));
+}
+function closeRadio(){
+    radio.pause();
+    document.getElementById('radioPopup').style.display = 'none';
+}
 function toggleRadio(){
-    if(audio.paused){
-        audio.play();
-        btn.textContent = 'Pause';
+    if(radio.paused){
+        radio.play();
     } else {
-        audio.pause();
-        btn.textContent = 'Play';
+        radio.pause();
     }
 }
-
-// Autoplay safely
-audio.volume = 0.5;
-audio.play().catch(() => { btn.textContent='Play'; });
 </script>
 
 </body>
