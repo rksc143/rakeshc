@@ -1,7 +1,8 @@
-<script>
 // Fetch Weather Data
 function fetchWeather() {
     const weatherStatusElement = document.getElementById('weatherStatus');
+    
+    // OpenWeatherMap API URL (replace with your actual API Key)
     fetch('https://api.openweathermap.org/data/2.5/weather?q=Kathmandu&appid=YOUR_API_KEY&units=metric')
         .then(response => {
             if (!response.ok) {
@@ -20,23 +21,26 @@ function fetchWeather() {
         });
 }
 
-// Update Time
+// Update Time (24hr format)
 function updateTime() {
     const currentTimeElement = document.getElementById('currentTime');
     const date = new Date();
+
+    // Get hours, minutes and seconds
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
     const seconds = String(date.getSeconds()).padStart(2, '0');
+
+    // Set time content
     currentTimeElement.textContent = `${hours}:${minutes}:${seconds}`;
 }
 
-// Update weather and time every minute
+// Function to run every minute (60000 ms)
 setInterval(() => {
     fetchWeather();
     updateTime();
-}, 60000); 
+}, 60000);
 
-// Initial fetch
+// Initial fetch when page loads
 fetchWeather();
 updateTime();
-</script>
