@@ -32,23 +32,11 @@
         section { padding:80px 20px; max-width:1200px; margin:auto; text-align:center; }
         h2 { font-size:2.5rem; margin-bottom:40px; }
 
-        /* Footer */
-        footer { background:#111; padding:30px; margin-top:50px; font-size:0.9rem; }
-
         /* Weather and Time Section */
         #weather, #time { font-size:1.2rem; margin-top:20px; }
 
-        /* Radio Player (Click-to-play) */
-        #radioPopup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:1001; justify-content:center; align-items:center; }
-        #radioPopup .radioContent { background:#222; padding:20px; border-radius:10px; text-align:center; max-width:400px; width:90%; box-shadow:0 0 50px rgba(255,140,0,0.7); }
-        #radioPopup .radioContent button { padding:10px 20px; border:none; border-radius:10px; background:#ff8c00; color:#fff; font-weight:bold; cursor:pointer; margin-top:15px; }
-        #radioPopup .closeRadio { position:absolute; top:20px; right:30px; font-size:40px; cursor:pointer; color:#fff; font-weight:bold; }
-
-        /* Responsive */
-        @media(max-width:768px){
-            header h1 { font-size:3rem; }
-            header p { font-size:1.2rem; }
-        }
+        /* Footer */
+        footer { background:#111; padding:30px; margin-top:50px; font-size:0.9rem; }
     </style>
 </head>
 <body>
@@ -77,42 +65,10 @@
     <p>Hello! I am Rakesh, a passionate creator. Everything runs inline in this single file.</p>
 </section>
 
-<!-- Media Gallery -->
-<section id="mediaGallery">
-    <h2>Media Gallery</h2>
-    <img src="media1.jpg" onclick="openPopup('media1')" alt="Media 1">
-    <img src="media2.jpg" onclick="openPopup('media2')" alt="Media 2">
-    <img src="media3.jpg" onclick="openPopup('media3')" alt="Media 3">
-    <img src="media4.jpg" onclick="openPopup('media4')" alt="Media 4">
-    <img src="media5.jpg" onclick="openPopup('media5')" alt="Media 5">
-</section>
-
 <!-- Weather and Time -->
 <section id="weather">
     <h3>Current Weather: <span id="weatherStatus">Loading...</span></h3>
     <p>Time: <span id="currentTime">Loading...</span></p>
-</section>
-
-<!-- Popup Overlay -->
-<div id="popupOverlay">
-    <span class="closeBtn" onclick="closePopup()">&times;</span>
-    <div class="popupContent" id="popupContent"></div>
-</div>
-
-<!-- Radio Popup -->
-<div id="radioPopup">
-    <span class="closeRadio" onclick="closeRadio()">&times;</span>
-    <div class="radioContent">
-        <h2>Live Radio</h2>
-        <audio id="radioAudio" src="https://npr-ice.streamguys1.com/live.mp3" controls autoplay></audio>
-        <button onclick="toggleRadio()">Pause/Play</button>
-    </div>
-</div>
-
-<!-- Contact -->
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Reach me at <strong>rakesh14re@gmail.com</strong>.</p>
 </section>
 
 <!-- Footer -->
@@ -122,25 +78,38 @@
 
 <!-- JS -->
 <script>
-// Inline media content
-const mediaContent = {
-    media1: "<h3>Media 1</h3><p>This is the inline content for Media 1.</p><img src='media1.jpg' style='width:100%; border-radius:10px;'>",
-    media2: "<h3>Media 2</h3><p>Here is Media 2 content. Fully inline!</p><img src='media2.jpg' style='width:100%; border-radius:10px;'>",
-    media3: "<h3>Media 3</h3><p>Inline Media 3 description.</p><img src='media3.jpg' style='width:100%; border-radius:10px;'>",
-    media4: "<h3>Media 4</h3><p>Inline Media 4 content here.</p><img src='media4.jpg' style='width:100%; border-radius:10px;'>",
-    media5: "<h3>Media 5</h3><p>Media 5 inline popup content.</p><img src='media5.jpg' style='width:100%; border-radius:10px;'>",
-};
-
-// Media popup
-function openPopup(key){
-    document.getElementById('popupContent').innerHTML = mediaContent[key];
-    document.getElementById('popupOverlay').style.display = 'flex';
+// Function to update the time every second
+function updateTime() {
+    const currentTimeElement = document.getElementById('currentTime');
+    const date = new Date();
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    currentTimeElement.textContent = `${hours}:${minutes}:${seconds}`;
 }
-function closePopup(){
-    document.getElementById('popupOverlay').style.display = 'none';
-    document.getElementById('popupContent').innerHTML = '';
+setInterval(updateTime, 1000); // Update time every second
+
+// Fetch weather data using OpenWeatherMap API
+const apiKey = 'YOUR_API_KEY'; // Replace with your OpenWeatherMap API Key
+const weatherStatusElement = document.getElementById('weatherStatus');
+
+function fetchWeather() {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=London&appid=${apiKey}&units=metric`)
+        .then(response => response.json())
+        .then(data => {
+            const temperature = data.main.temp;
+            const description = data.weather[0].description;
+            weatherStatusElement.textContent = `${description} - ${temperature}°C`;
+        })
+        .catch(error => {
+            weatherStatusElement.textContent = 'Failed to load weather data';
+        });
 }
 
-// Radio popup
-const radio = document.getElementById('radioAudio');
-function
+// Initialize weather and time
+fetchWeather();
+updateTime();
+</script>
+
+</body>
+</html>
