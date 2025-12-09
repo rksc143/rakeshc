@@ -18,6 +18,12 @@
         nav ul li a:hover { color: #ff8c00; }
         section { padding: 80px 20px; max-width: 800px; margin:auto; }
         footer { background: #111; color: #fff; padding: 30px 20px; }
+
+        /* iframe styling */
+        #mediaFrame { width: 80%; height: 500px; border: 2px solid #fff; display: none; margin-top: 50px; }
+        #mediaFrameContainer { text-align:center; }
+        img.clickable { cursor:pointer; border-radius:10px; width:200px; transition: transform 0.3s; }
+        img.clickable:hover { transform: scale(1.05); }
     </style>
 </head>
 <body>
@@ -36,9 +42,19 @@
     <header>
         <h1>Rakesh C</h1>
         <p>Innovate, Create, Inspire</p>
-        <!-- Simple Link/Button to Media Page -->
-        <a href="index1.html" class="btn">Explore Media</a>
+
+        <!-- Clickable Photo to open index1.html in iframe -->
+        <img src="media-thumbnail.jpg" alt="Click to explore media" class="clickable"
+             onclick="document.getElementById('mediaFrame').style.display='block'; document.getElementById('mediaFrame').src='index1.html';">
+
+        <!-- Optional Button -->
+        <a href="index1.html" class="btn" target="_blank">Open Media in New Tab</a>
     </header>
+
+    <!-- iframe Container -->
+    <section id="mediaFrameContainer">
+        <iframe id="mediaFrame" src=""></iframe>
+    </section>
 
     <!-- About Section -->
     <section id="about">
