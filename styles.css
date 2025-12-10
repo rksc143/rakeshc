@@ -68,28 +68,34 @@ form label {
 
 form input[type="text"], form input[type="email"], form textarea {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
+    padding: 12px;               /* Increased padding for larger input field */
+    font-size: 16px;             /* Increased font size for better readability */
     border-radius: 8px;
     border: 1px solid #ccc;
     margin-bottom: 15px;
     box-sizing: border-box;
 }
 
+/* Adjusting text area size */
 form textarea {
-    height: 150px;
+    height: 200px;              /* Increased height to make it larger */
+    resize: vertical;           /* Allows vertical resizing */
 }
 
+/* Submit button styling */
 form button[type="submit"] {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 12px 20px;         /* Increased padding for a larger button */
+    font-size: 16px;            /* Font size adjustment */
     background-color: #333;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    width: 100%;                /* Make button full width */
+    box-sizing: border-box;     /* Ensure padding doesn't affect width */
 }
 
+/* Button hover effect */
 form button[type="submit"]:hover {
     background-color: #555;
 }
