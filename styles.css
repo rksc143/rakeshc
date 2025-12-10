@@ -61,7 +61,7 @@ footer {
 
 /* Style for textarea */
 textarea {
-    width: 100%;      /* Width 100% बनाउँछ, यसले textarea लाई आफ्नो पेजको पुरा चौडाइ भर्न दिन्छ */
+    width: 65%;      /* Width 100% बनाउँछ, यसले textarea लाई आफ्नो पेजको पुरा चौडाइ भर्न दिन्छ */
     height: 150px;    /* Height बढाउँछ */
     padding: 10px;    /* Padding थप्छ जसले टेक्स्ट र सीमाको बीचमा थोड़ी स्पेस बनाउँछ */
     font-size: 16px;  /* Text को आकार बढाउँछ */
