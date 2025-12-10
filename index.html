@@ -14,6 +14,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#signup">Sign Up</a></li>
             </ul>
         </nav>
     </header>
@@ -28,15 +29,47 @@
         <p>This is the about section where you can introduce yourself.</p>
     </section>
 
+    <!-- Contact Section (सम्पर्क फारम) -->
     <section id="contact">
-        <h2>Contact Section</h2>
-        <p>This is the contact section. You can add a contact form here later.</p>
+        <h2>Contact Us</h2>
+        <form action="submit_form.php" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <!-- Sign-Up Section (साइन-अप फारम) -->
+    <section id="signup">
+        <h2>Sign Up</h2>
+        <form action="signup_form.php" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+
+            <button type="submit">Sign Up</button>
+        </form>
     </section>
 
     <footer>
         <p>&copy; 2025 My Awesome Website</p>
     </footer>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
