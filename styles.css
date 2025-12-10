@@ -59,43 +59,17 @@ footer {
 }
 /* [पुरानो CSS कोड यहाँ] */
 
-/* Contact Form Styles */
-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Style for textarea */
+textarea {
+    width: 100%;      /* Width 100% बनाउँछ, यसले textarea लाई आफ्नो पेजको पुरा चौडाइ भर्न दिन्छ */
+    height: 150px;    /* Height बढाउँछ */
+    padding: 10px;    /* Padding थप्छ जसले टेक्स्ट र सीमाको बीचमा थोड़ी स्पेस बनाउँछ */
+    font-size: 16px;  /* Text को आकार बढाउँछ */
+    border-radius: 8px; /* Border को गोलाइ बढाउँछ */
+    border: 1px solid #ccc; /* Border को रंग र प्रकार सेट गर्दछ */
+    box-sizing: border-box; /* Padding र Border लाई width र height मा समावेश गर्दछ */
 }
 
-form label {
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-form input,
-form textarea {
-    padding: 10px;
-    margin-bottom: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-form button {
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-form button:hover {
-    background-color: #555;
-}
 
 /* Sign-Up Form Styles */
 #signup form {
