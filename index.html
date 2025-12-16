@@ -3,119 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Awesome Website</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Header Section -->
-    <header>
-        <h1>Welcome to My Awesome Website</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#menu">Menu</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!---clock section-->
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>www.rakeshc.com.np</title>
+    <title>Awesome Website | Rakesh C.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: 'Arial', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     </style>
 </head>
-<body class="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center p-4">
+<body class="bg-gray-50 text-gray-800">
 
-    <div class="text-center max-w-3xl w-full">
-        <h1 class="text-4xl font-bold mb-2">Welcome to Rakesh's Website</h1>
-        <p class="mb-10 text-gray-400">This simulates your main homepage.</p>
-
-        <!-- PREVIEW SECTION -->
-        <div class="mb-12">
-            <h2 class="text-xl font-semibold mb-4 text-cyan-400">Preview of the Link:</h2>
-            <a href="clock.html" class="inline-block px-8 py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-lg shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all duration-300 transform hover:scale-105">
-                View Khatra Clock ⏱️
-            </a>
-        </div>
-        
-        <!-- COPY CODE SECTION -->
-        <div class="bg-gray-800 border border-gray-700 rounded-xl p-6 text-left shadow-2xl">
-            <h3 class="text-lg font-bold mb-2 flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-400"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                Copy this code:
-            </h3>
-            <p class="text-gray-400 text-sm mb-4">Paste this line into your real <code>index.html</code> where you want the button to show up.</p>
-            
-            <div class="bg-black/50 p-4 rounded-lg overflow-x-auto font-mono text-sm border border-gray-700 relative group">
-                <code class="text-green-400 block whitespace-pre">
-&lt;!-- Link to Khatra Clock --&gt;
-&lt;a href="clock.html" style="background-color: #0891b2; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;"&gt;
-    View Khatra Clock ⏱️
-&lt;/a&gt;
-                </code>
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="font-bold text-2xl text-cyan-600">My Website</span>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="#home" class="text-gray-900 hover:text-cyan-600 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="#about" class="text-gray-500 hover:text-cyan-600 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                    <a href="#menu" class="text-gray-500 hover:text-cyan-600 px-3 py-2 rounded-md text-sm font-medium">Menu</a>
+                    <a href="#contact" class="text-gray-500 hover:text-cyan-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                </div>
             </div>
         </div>
+    </nav>
 
-        <p class="mt-8 text-sm text-gray-500">
-            <strong>Note:</strong> Ensure <code>clock.html</code> is uploaded to the same folder as your <code>index.html</code> on GitHub.
-        </p>
-    </div>
+    <!-- Home Section with Side-by-Side Clock -->
+    <section id="home" class="min-h-screen pt-20 pb-10 bg-gray-900 text-white flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
+                
+                <!-- Text Content (Left) -->
+                <div class="lg:w-1/2 text-center lg:text-left z-10">
+                    <h1 class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight">
+                        Welcome to <span class="text-cyan-400">My Awesome Website</span>
+                    </h1>
+                    <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto lg:mx-0">
+                        Explore my portfolio, check out my projects, and see the Khatra Clock live in action right here.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#about" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105 shadow-lg">
+                            About Me
+                        </a>
+                        <a href="#contact" class="border border-cyan-600 text-cyan-400 hover:bg-cyan-600 hover:text-white font-bold py-3 px-8 rounded-full transition-colors">
+                            Contact
+                        </a>
+                    </div>
+                </div>
 
-</body>
-</html>
+                <!-- Clock Widget (Right) -->
+                <div class="lg:w-1/2 w-full flex justify-center lg:justify-end">
+                    <div class="relative w-full max-w-[500px] aspect-square rounded-[3rem] overflow-hidden shadow-[0_0_60px_rgba(6,182,212,0.4)] border-4 border-gray-800 bg-black/50 backdrop-blur-sm transform hover:scale-[1.02] transition-transform duration-500">
+                        <iframe src="clock.html" title="Khatra Clock" class="absolute inset-0 w-full h-full border-0" scrolling="no"></iframe>
+                    </div>
+                </div>
 
-    <!-- Home Section -->
-    <section id="home">
-        <h2>Home Section</h2>
-        <p>This is the home section of your website. Welcome!</p>
+            </div>
+        </div>
     </section>
 
     <!-- About Section -->
-    <section id="about">
-        <h2>About Section</h2>
-        <p>This is the about section where you can introduce yourself or your website.</p>
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-10 text-gray-900">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center gap-10">
+                <div class="w-full md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800" alt="About Image" class="rounded-lg shadow-xl w-full object-cover h-64 md:h-80">
+                </div>
+                <div class="w-full md:w-1/2 text-lg text-gray-600">
+                    <p class="mb-4">
+                        Hello! Welcome to Rakesh's Website. This simulates your main homepage.
+                    </p>
+                    <p>
+                        I am passionate about creating stunning web experiences. I love combining design with technology to build things that are both beautiful and functional.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 
-   
     <!-- Menu Section -->
-    <section id="menu">
-        <h4>Menu Section</h4>
-        <p>This is the about section where you can see menu website.</p>
-    </section>
-     <!-- Contact Form Section -->
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <form action="https://formspree.io/f/mqarydzo" method="POST">
-            <!-- Name Field -->
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
-
-            <!-- Email Field -->
-            <label for="email">Your email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <!-- Message Field -->
-            <label for="message">Your message:</label>
-            <textarea id="message" name="message" required></textarea>
-
-            <!-- Submit Button -->
-            <button type="submit">Send</button>
-        </form>
+    <section id="menu" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-10 text-gray-900">Menu Website</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-6 bg-white border rounded-lg hover:shadow-lg transition">
+                    <h3 class="font-bold text-xl mb-2">Service 1</h3>
+                    <p class="text-gray-500">Description of service or menu item goes here.</p>
+                </div>
+                <div class="p-6 bg-white border rounded-lg hover:shadow-lg transition">
+                    <h3 class="font-bold text-xl mb-2">Service 2</h3>
+                    <p class="text-gray-500">Description of service or menu item goes here.</p>
+                </div>
+                <div class="p-6 bg-white border rounded-lg hover:shadow-lg transition">
+                    <h3 class="font-bold text-xl mb-2">Service 3</h3>
+                    <p class="text-gray-500">Description of service or menu item goes here.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2025 My Awesome Website</p>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-10">Contact Us</h2>
+            <form class="space-y-6 text-left bg-gray-800 p-8 rounded-xl shadow-lg">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Name</label>
+                    <input type="text" class="w-full px-4 py-2 rounded-md bg-gray-700 border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Your Name">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Email</label>
+                    <input type="email" class="w-full px-4 py-2 rounded-md bg-gray-700 border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="your@email.com">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Message</label>
+                    <textarea rows="4" class="w-full px-4 py-2 rounded-md bg-gray-700 border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Write your message..."></textarea>
+                </div>
+                <button type="button" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 rounded-md transition-colors">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-gray-500 py-8 text-center border-t border-gray-800">
+        <p>&copy; 2025 My Awesome Website. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
